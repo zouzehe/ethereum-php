@@ -8,11 +8,5 @@
     "autoload": {
         "psr-4": {"": "src/"}
     },
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Cesar Rodriguez",
-            "email": "kesarr+eth@gmail.com"
-        }
-    ]
+    "license": "MIT"     
 }
