@@ -1,5 +1,6 @@
 {
     "name": "zawa/ethereum-php",
+    "type": "library",
     "description": "Ethereum client library in PHP",
     "require": {
         "php": ">=7.1",
@@ -8,5 +9,11 @@
     "autoload": {
         "psr-4": {"": "src/"}
     },
+    "authors": [
+        {
+            "name": "Zawa",
+            "email": "zouzehe@126.com"
+        }
+    ],
     "license": "MIT"     
 }
