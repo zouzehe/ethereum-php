@@ -34,16 +34,16 @@ class Eth extends AbstractMethods
             return $result;
         }
 
-        return $result; // TODO: test this
+        return $result;
     }
 
-    public function coinbase(): ?Address
+    public function coinbase()
     {
         $response = $this->client->send(
             $this->client->request(64, 'eth_coinbase', [])
         );
 
-        return ($response->getRpcResult()) ? new Address($response->getRpcResult()) : null;
+        return $response->getRpcResult();
     }
 
     public function mining(): bool
@@ -82,12 +82,14 @@ class Eth extends AbstractMethods
         $response = $this->client->send(
             $this->client->request(1, 'eth_accounts', [])
         );
-        $addresses = [];
-        foreach ($response->getRpcResult() as $address) {
-            $addresses[] = new Address($address);
-        }
 
-        return $addresses;
+        return $response->getRpcResult();
+        // $addresses = [];
+        // foreach ($response->getRpcResult() as $address) {
+        //     $addresses[] = new Address($address);
+        // }
+
+        // return $addresses;
 
     }
 
@@ -115,8 +117,7 @@ class Eth extends AbstractMethods
         $response = $this->client->send(
             $this->client->request(1, 'eth_getStorageAt', [$address->toString(), $quantity, $blockNumber->toString()])
         );
-
-        return $response->getRpcResult();
+        return (string)$response->getRpcResult();
     }
 
     public function getTransactionCount(Address $address, BlockNumber $blockNumber): int
