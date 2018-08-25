@@ -112,11 +112,12 @@ class Eth extends AbstractMethods
 
     }
 
-    public function getStorageAt(Address $address, int $quantity, BlockNumber $blockNumber): string
+    public function getStorageAt(Address $address, $quantity, BlockNumber $blockNumber): string
     {
         $response = $this->client->send(
             $this->client->request(1, 'eth_getStorageAt', [$address->toString(), $quantity, $blockNumber->toString()])
         );
+
         return (string)$response->getRpcResult();
     }
 
@@ -213,7 +214,6 @@ class Eth extends AbstractMethods
         $response = $this->client->send(
             $this->client->request(1, 'eth_call', [$transaction->toArray(), $blockNumber->toString()])
         );
-
         return $response->getRpcResult();
     }
 

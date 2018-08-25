@@ -13,7 +13,7 @@ class Transaction
     private $nonce;
 
     public function __construct(
-        Address $from,
+        $from,
         Address $to,
         string $data = null,
         int $gas = null,
@@ -32,13 +32,15 @@ class Transaction
 
     public function toArray(): array
     {
+
         $transaction = [
-            'from' => $this->from->toString(),
             'to' => $this->to->toString(),
         ];
-
+        if (!is_null($this->from)) {
+            $transaction['from'] =  $this->from->toString();
+        }
         if (!is_null($this->data)) {
-            $transaction['data'] = '0x'.dechex($this->data);
+            $transaction['data'] =  substr($this->data,0,2) =='0x' ? $this->data : '0x'.dechex($this->data);
         }
 
         if (!is_null($this->gas)) {

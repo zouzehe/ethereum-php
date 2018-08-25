@@ -51,8 +51,14 @@ class Personal extends AbstractMethods
         $response = $this->client->send(
             $this->client->request(1, 'personal_sendTransaction', [$transaction->toArray(), $password])
         );
-
         return new TransactionHash($response->getRpcResult());
-
     }
+
+    public function importRawKey($key ,string $password){
+        $response = $this->client->send(
+            $this->client->request(1, 'personal_importRawKey', [$key, $password])
+        );
+        return $response->getRpcResult();
+    }
+
 }
