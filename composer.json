@@ -15,5 +15,6 @@
             "email": "zouzehe@126.com"
         }
     ],
+    "minimum-stability": "dev",
     "license": "MIT"     
 }
